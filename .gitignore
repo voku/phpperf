@@ -1,2 +1,14 @@
 *.swp
-results.html
+/nbproject/
+/output/
+/logs/
+
+/nbproject/private/
+
+.idea
+
+/build
+
+# composer
+vendor
+composer.lock

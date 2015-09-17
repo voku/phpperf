@@ -1,7 +1,9 @@
-#!/usr/bin/php 
+#!/usr/bin/php
 <?php
 
-include_once('IProfile.php');
+require_once 'vendor/autoload.php';
+require_once 'IProfile.php';
+
 class TestRunner {
     const ITERATIONS = 1000;
     const REPETITIONS = 100;
@@ -174,7 +176,7 @@ class TestRunner {
             }
         }
     }
-    
+
     protected function resolveAlias($alias) {
         list($class, $method) = explode("::", $alias['alias']);
 
@@ -188,10 +190,10 @@ class TestRunner {
                         // keep averages in check
                         $this->mean += $result['mean'];
                         $this->median[] = $result['mean'];
-                        
+
                         // override return values with alias's original label if it has one
                         return array_merge(
-                            $result, 
+                            $result,
                             $alias
                         );
                     }

@@ -1,7 +1,9 @@
 <?php
 
+use voku\helper\UTF8;
+
 class StringProfiles implements IProfile {
-    
+
     public function __construct() {
         $this->largeStr =
            "foo bar baz test foo foo foo test foo bar baztestfootest foo bar ".
@@ -124,8 +126,16 @@ class StringProfiles implements IProfile {
         str_replace("foo", "bar", "foobarfoobar");
     }
 
+    public function profileUtf8StrReplace() {
+        UTF8::str_replace("foo", "bar", "foobarfoobar");
+    }
+
     public function profileStrShuffleMediumString() {
         str_shuffle("abcdefghijklmnopqrstuvwxyz");
+    }
+
+    public function profileUtf8StrShuffleMediumString() {
+        UTF8::str_shuffle("abcdefghijklmnopqrstuvwxyz");
     }
 
     /**
@@ -218,14 +228,14 @@ class StringProfiles implements IProfile {
     }
 
     /**
-     * @label string dot concatenation with ~520 char string 
+     * @label string dot concatenation with ~520 char string
      */
     public function profileStringConcatenationWithDotLargeString() {
         "some string".$this->largeStr;
     }
 
     /**
-     * @label string concatenation with interpolation with ~520 char string 
+     * @label string concatenation with interpolation with ~520 char string
      */
     public function profileStringConcatenationWithInterpolationLargeString() {
         "some string{$this->largeStr}";
